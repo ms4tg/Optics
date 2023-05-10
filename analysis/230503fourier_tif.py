@@ -11,14 +11,15 @@ import imageio
 
 
 #images_dir = "/media/sf_research/cass/code/data/stripe/"
-images_dir = "/media/sf_BIGTOP_data/1112/"
-output_dir ="/media/sf_research/cass/code/output/230503fourier_tif/"
-#output_dir ="/media/sf_research/cass/code/output/230412fourier/"
+images_dir1 = "/media/sf_BIGTOP_data/1112/"
+images_dir2 = "/media/sf_BIGTOP_data/1113/"
+#output_dir ="/media/sf_research/cass/code/output/230503fourier_tif/"
+output_dir ="/media/sf_research/cass/code/output/230510fourier_upper_tif/"
 
 left = 220
-top = 765
+top = 520
 right = 530
-bottom = 915
+bottom = 670
 angle = 45
 
 pixels = (right-left)*(top-bottom)
@@ -28,9 +29,13 @@ width = right-left
 #2d image array (height, width)
 #each image is stored row after row in a 1d array
 images_path = []
-for file in os.listdir(images_dir):
+for file in os.listdir(images_dir1):
     if file.endswith("tif"):
-        images_path.append(os.path.join(images_dir,file))
+        images_path.append(os.path.join(images_dir1,file))
+
+for file in os.listdir(images_dir2):
+    if file.endswith("tif"):
+        images_path.append(os.path.join(images_dir2,file))
 
 
 
@@ -39,7 +44,7 @@ for image in images_path:
     im = Image.open(image)
     im = im.rotate(angle)
     im_cropped = im.crop((left,top,right,bottom))
-    im_cropped.save(images_dir+str(c)+".tiff")
+    #im_cropped.save(images_dir+str(c)+".tiff")
     imarray = np.array(im_cropped)
     fourier_im = np.fft.fftshift(np.fft.fft2(imarray))
 

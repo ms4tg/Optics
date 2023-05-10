@@ -8,8 +8,8 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 
-images_dir = "/media/sf_research/cass/code/output/230503fourier_tif/"
-output_dir = "/media/sf_research/cass/code/output/230503fourier_pc/"
+images_dir = "/media/sf_research/cass/code/output/230510fourier_upper_tif/"
+output_dir = "/media/sf_research/cass/code/output/230510fourier_upper_pc/"
 left = 220
 top = 520
 right = 530
